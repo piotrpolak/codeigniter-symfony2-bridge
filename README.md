@@ -26,10 +26,11 @@ Symfony2: 2.0 - 2.7
 
 ## Loading the library
 You can either load the library manually every time you use
-`$this->load->load('Symfony2_bridge', array('root_dir' => 'path/to/symfony2/application/'));`
+```$this->load->load('Symfony2_bridge', array('root_dir' => 'path/to/symfony2/application/'));```
+
 Or make it globally available by adding it to CodeIgniter autload
 [application/config/autoload.php](https://github.com/bcit-ci/CodeIgniter/blob/develop/application/config/autoload.php#L63)
-`$autoload['libraries'] = array('Symfony2_bridge');
+```$autoload['libraries'] = array('Symfony2_bridge');```
 
 Please note that the default `$params['root_dir']` is `../../app/`
 
