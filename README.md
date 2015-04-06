@@ -1,9 +1,18 @@
 # codeigniter-symfony2-bridge
-CodeIgniter library that facilitates integration of Symfony2 services into a CodeIgniter application in a compact yet elegant way.
+CodeIgniter library that facilitates integration of Symfony2 services into a CodeIgniter application in a compact yet
+elegant way.
 
 ## Some history and most common scenario description
 
-The library was written for a LTS project that had to be integrated with a brand new Symfony2 application. The business logic is encapsulated within services managed by Symfony2 dependency injection component and consumed both by the Symfony2 bundle controllers and CodeIgniter controllers. Where possible, the service methods were taking primitive parameters as input for convinience (approach similar to designing a friendly SOAP interface). The output of the methods can be both primitive parameters and complex objects as the bridge and the kernel itself manages the PSR autoload. The bridge does not create any overhead related to communication and parameter serialization.
+The library was written for a LTS project that had to be integrated with a brand new Symfony2 application.
+The business logic is encapsulated within services managed by Symfony2 dependency injection component and consumed both
+by the Symfony2 bundles and CodeIgniter controllers.
+
+Where possible, the service methods is taking variables of primitive types as input for convenience
+(approach similar to designing a friendly SOAP interface).
+
+The output of the methods can be both of primitive types and complex objects as the bridge and the kernel itself
+manages the PSR autoload. The bridge does not create any overhead related to communication and parameter serialization.
 
 ## Naming convention
 Method naming convention is intentionally camelCase, the same as in Symfony2
@@ -18,7 +27,8 @@ Symfony2: 2.0 - 2.7
 ## Loading the library
 You can either load the library manually every time you use
 `$this->load->load('Symfony2_bridge', array('root_dir' => 'path/to/symfony2/application/'));`
-Or make it globally available by adding it to CodeIgniter autload [application/config/autoload.php](https://github.com/bcit-ci/CodeIgniter/blob/develop/application/config/autoload.php#L63)
+Or make it globally available by adding it to CodeIgniter autload
+[application/config/autoload.php](https://github.com/bcit-ci/CodeIgniter/blob/develop/application/config/autoload.php#L63)
 `$autoload['libraries'] = array('Symfony2_bridge');
 
 Please note that the default `$params['root_dir']` is `../../app/`
