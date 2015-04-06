@@ -32,12 +32,13 @@ Or make it globally available by adding it to CodeIgniter autload
 [application/config/autoload.php](https://github.com/bcit-ci/CodeIgniter/blob/develop/application/config/autoload.php#L63)
 ```$autoload['libraries'] = array('Symfony2_bridge');```
 
-Please note that the default `$params['root_dir']` is `../../app/`
+Please note that the default `$params['root_dir']` is `../../app/` - this is where your `bootstrap.php.cache` and
+`AppKernel.php` lives.
 
 ## Examples
 
 ### Getting Symfony2 service container
-```
+```php
 try {
     // \Symfony\Component\DependencyInjection\Container
     $container = $this->symfony2_bridge->getContainer();
@@ -50,7 +51,7 @@ More information about Symfony2 service container and depencency injection:
 * http://symfony.com/doc/current/components/dependency_injection/introduction.html
 
 ### Consuming a service
-```
+```php
 try {
     $result = $this->symfony2_bridge->getContainer()->get('my_service')->businessLogicServiceMethod('primityve parameter'));
 } catch(Exception $e) {
@@ -60,7 +61,7 @@ try {
 More information about SOA: http://en.wikipedia.org/wiki/Service-oriented_architecture
 
 ### Getting Doctrine2 entity manager
-```
+```php
 try {
     $em = $this->symfony2_bridge->getContainer()->get('doctrine')->getManager();
 } catch(Exception $e) {
@@ -69,8 +70,7 @@ try {
 ```
 
 ### Loading an arbitrary class defined within a Symfony2 bundle
-
-```
+```php
 try {
     $container = $this->symfony2_bridge->getContainer(); // Initializes Symfony2 PSR class loader
     $imageHelper = new \Pepis\ImageManipulationBundle\Helpers\ImageHelper();
