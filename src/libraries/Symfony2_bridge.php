@@ -14,20 +14,20 @@
  *
  * Get a Symfony2 Service
  *
-
-$this->load->library('Symfony2_bridge');
-$result = $this->symfony2_bridge->getContainer()->get('my_service')->businessLogicServiceMethod('primityve parameter'));
-
-$em = $this->symfony2_bridge->getContainer()->get('doctrine')->getManager();
-
+ *
+ * $this->load->library('Symfony2_bridge');
+ * $result = $this->symfony2_bridge->getContainer()->get('my_service')->businessLogicServiceMethod('primityve parameter'));
+ *
+ * $em = $this->symfony2_bridge->getContainer()->get('doctrine')->getManager();
+ *
  *
  * Use autoload to receive a class
  *
-
-$this->load->library('Symfony2_bridge');
-$container = $this->symfony2_bridge->getContainer(); // Initializes Symfony2 PSR class loader
-$imageHelper = new \Pepis\UtilitiesBundle\Utilities\ImageHelper();
-
+ *
+ * $this->load->library('Symfony2_bridge');
+ * $container = $this->symfony2_bridge->getContainer(); // Initializes Symfony2 PSR class loader
+ * $imageHelper = new \Pepis\UtilitiesBundle\Utilities\ImageHelper();
+ *
  */
 class Symfony2_bridge {
 
