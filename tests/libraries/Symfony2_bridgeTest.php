@@ -9,7 +9,7 @@ class Symfony2_bridgeTest extends PHPUnit_Framework_TestCase {
             define('APPPATH', __DIR__.'/../../tests/mocks/ciapp/application/');
             define('BASEPATH', __DIR__);
             define('ENVIRONMENT', 'production');
-            require_once(__DIR__.'/../../libraries/Symfony2_bridge.php');
+            require_once(__DIR__.'/../../src/libraries/Symfony2_bridge.php');
         }
     }
 
