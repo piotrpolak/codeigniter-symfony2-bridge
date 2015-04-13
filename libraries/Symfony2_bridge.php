@@ -6,7 +6,7 @@
  *
  * Method naming convention is intentionally camelCase, the same as in Symfony2
  *
- * @version 1.0
+ * @version 1.0.1
  * @author Piotr Polak <piotr@polak.ro>
  * @license http://www.gnu.org/licenses/gpl-3.0.txt
  * @package PepisCMS
@@ -74,7 +74,7 @@ class Symfony2_bridge {
             // Checking whether bootstrap file exists
             if( !file_exists($this->symfony2_root_dir . 'bootstrap.php.cache') )
             {
-                throw new Exception('Unable to import application kernel. File bootstrap.php.cache does not exist.');
+                throw new Exception('Unable to import application bootstrap. File '.$this->symfony2_root_dir.'bootstrap.php.cache does not exist.', 200);
             }
 
             // Requesting Bootstrap file, the refference to the $loader object is not really needed
@@ -83,7 +83,7 @@ class Symfony2_bridge {
             // Checking whether the kernel file exists
             if( !file_exists($this->symfony2_root_dir . 'AppKernel.php') )
             {
-                throw new Exception('Unable to import application kernel. File AppKernel.php does not exist.');
+                throw new Exception('Unable to import application kernel. File AppKernel.php does not exist.', 300);
             }
 
             // Requesting AppKernel file
