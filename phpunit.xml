@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+	colors="true"
+	convertNoticesToExceptions="true"
+	convertWarningsToExceptions="true"
+	stopOnError="false"
+	stopOnFailure="false"
+	stopOnIncomplete="false"
+	stopOnSkipped="false">
+	<testsuites>
+		<testsuite name="CodeIgniter Symodny2 Bridge Core Test Suite">
+            <directory suffix="Test.php">./tests/libraries/</directory>
+		</testsuite>
+	</testsuites>
+</phpunit>

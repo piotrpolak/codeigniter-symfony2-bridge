@@ -2,6 +2,8 @@
 CodeIgniter library that facilitates integration of Symfony2 services into a CodeIgniter application in a compact yet
 elegant way.
 
+[![Build Status](https://travis-ci.org/piotrpolak/codeigniter-symfony2-bridge.svg)](https://travis-ci.org/piotrpolak/codeigniter-symfony2-bridge)
+
 ## Some history and most common scenario
 
 The library was written for a LTS project that had to be integrated with a brand new Symfony2 application.
