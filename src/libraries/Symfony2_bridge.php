@@ -8,7 +8,7 @@
  *
  * @version 1.0.1
  * @author Piotr Polak <piotr@polak.ro>
- * @license http://www.gnu.org/licenses/gpl-3.0.txt
+ * @license MIT, GPLv3
  * @package PepisCMS
  *
  *

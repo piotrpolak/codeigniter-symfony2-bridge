@@ -33,7 +33,9 @@ Symfony2: 2.0 - 2.7
 Note this code is fully compatible with PHP 5.2-5.5 yet Symfony2 will not run on anything below PHP 5.3.
 
 ## License
-[GPL v3](http://www.gnu.org/licenses/gpl-3.0.txt)
+The software is dual-licensed under:
+ * [MIT](LICENSE_MIT.txt)
+ * [GPL v3](LICENSE_GPL_V3.txt)
 
 ## Loading the library
 You can either load the library manually every time you use
