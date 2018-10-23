@@ -28,7 +28,7 @@ Method naming convention is intentionally camelCase, the same as in Symfony2 - o
 ## Compatibility
 CodeIgniter: 2.0 - 3.0
 
-Symfony2: 2.0 - 2.7
+Symfony2: 2.0 - 2.8
 
 Note this code is fully compatible with PHP 5.2-5.5 yet Symfony2 will not run on anything below PHP 5.3.
 
@@ -47,6 +47,17 @@ Or make it globally available by adding it to CodeIgniter autload
 
 Please note that the default `$params['root_dir']` is `../../app/` - this is where your `bootstrap.php.cache` and
 `AppKernel.php` lives.
+
+## Testing
+
+```bash
+composer install --prefer-dist && ./vendor/bin/phpunit -v
+```
+
+To test in an arbitrary version combination, please use (`sudo` might be required to connect to the Docker daemon):
+```bash
+PHP_VERSION=7.2 bin/test_in_docker.sh
+```
 
 ## Examples
 

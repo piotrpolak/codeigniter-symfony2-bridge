@@ -1,0 +1,18 @@
+{
+    "name": "piotrpolak/codeigniter-symfony2-bridge",
+    "description": "CodeIgniter library that facilitates integration of Symfony2 services into a CodeIgniter application in a compact yet elegant way.",
+    "type": "symfony-bundle",
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Piotr Polak",
+            "email": "piotr@polak.ro"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    }
+}
