@@ -5,7 +5,15 @@
     "require": {
         "php": ">=5.3.0"
     },
-    "license": "MIT",
+    "license": "MIT, GPLv3",
+    "autoload": {
+        "psr-4": {
+            "PiotrPolak\\CodeIgniterSymfonyBridge\\": "src/"
+        },
+        "exclude-from-classmap": [
+            "/src/Tests/"
+        ]
+    },
     "authors": [
         {
             "name": "Piotr Polak",

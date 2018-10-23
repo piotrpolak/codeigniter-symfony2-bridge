@@ -26,11 +26,11 @@ since 2008 with success.
 Method naming convention is intentionally camelCase, the same as in Symfony2 - opposite to CodeIgniter underscore.
 
 ## Compatibility
-CodeIgniter: 2.0 - 3.0
+CodeIgniter: 2.0 - 3.1+
 
 Symfony2: 2.0 - 2.8
 
-Note this code is fully compatible with PHP 5.2-5.5 yet Symfony2 will not run on anything below PHP 5.3.
+Note this code is fully compatible with PHP 5.2-5.6 yet Symfony2 will not run on anything below PHP 5.3.
 
 ## License
 The software is dual-licensed under:
@@ -76,8 +76,9 @@ More information about Symfony2 service container and depencency injection:
 
 ### Consuming a service
 ```php
+$bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge();
 try {
-    $result = $this->symfony2_bridge->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of primitive type'));
+    $result = $bridge->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of primitive type'));
 } catch(Exception $e) {
     // Unable to initialize Symfony2 kernel
 }
@@ -89,8 +90,9 @@ service integration easy. The output of the service method can be of any type.
 
 ### Getting Doctrine2 entity manager
 ```php
+$bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge();
 try {
-    $em = $this->symfony2_bridge->getContainer()->get('doctrine')->getManager();
+    $em = $bridge->getContainer()->get('doctrine')->getManager();
 } catch(Exception $e) {
     // Unable to initialize Symfony2 kernel
 }
@@ -100,8 +102,9 @@ Getting access to the Doctrine2 entity manager makes you able to get access to t
 
 ### Loading an arbitrary class defined within a Symfony2 bundle
 ```php
+$bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge();
 try {
-    $container = $this->symfony2_bridge->getContainer(); // Initializes Symfony2 PSR class loader
+    $container = $bridge->getContainer(); // Initializes Symfony2 PSR class loader
     $imageHelper = new \Pepis\ImageManipulationBundle\Helpers\ImageHelper();
 } catch(Exception $e) {
     // Unable to initialize Symfony2 kernel

@@ -1,21 +1,23 @@
 <?php
 
-class Symfony2_bridgeTest extends PHPUnit_Framework_TestCase {
+namespace PiotrPolak\CodeIgniterSymfonyBridge\Tests;
 
+use PiotrPolak\CodeIgniterSymfonyBridge\Bridge;
+
+class BridgeTest extends \PHPUnit_Framework_TestCase
+{
     public static function setUpBeforeClass()
     {
-        if( !defined('APPPATH') )
-        {
-            define('APPPATH', realpath(__DIR__.'/../../tests/mocks/ciapp/application/').'/');
+        if (!defined('APPPATH')) {
+            define('APPPATH', __DIR__ . '/mocks/ciapp/application/');
             define('BASEPATH', __DIR__);
             define('ENVIRONMENT', 'production');
-            require_once(__DIR__.'/../../src/libraries/Symfony2_bridge.php');
         }
     }
 
     public function testGetKernelDefaultConfiguration()
     {
-        $bridge = new Symfony2_bridge();
+        $bridge = new Bridge();
 
         $kernel = $bridge->getKernel();
         $this->assertNotNull($kernel);
@@ -26,7 +28,7 @@ class Symfony2_bridgeTest extends PHPUnit_Framework_TestCase {
 
     public function testGetKernelManualConfiguration()
     {
-        $bridge = new Symfony2_bridge(array('root_dir' => APPPATH.'../../app/'));
+        $bridge = new Bridge(array('root_dir' => APPPATH . '../../app/'));
 
         $kernel = $bridge->getKernel();
         $this->assertNotNull($kernel);
@@ -36,12 +38,12 @@ class Symfony2_bridgeTest extends PHPUnit_Framework_TestCase {
     }
 
     /**
-     * @expectedException       Exception
-     * @expectedExceptionCode   200
+     * @expectedException \Exception
+     * @expectedExceptionCode 200
      */
     public function testGetKernelWrongManualConfiguration()
     {
-        $bridge = new Symfony2_bridge(array('root_dir' => 'inexistentLocation'));
+        $bridge = new Bridge(array('root_dir' => 'inexistentLocation'));
 
         $kernel = $bridge->getKernel();
         $this->assertNull($kernel);
