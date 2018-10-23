@@ -9,5 +9,8 @@ php:
   - hhvm
   - nightly
 
+install:
+  - 'composer --prefer-dist install'
+
 script:
   - vendor/bin/phpunit -v
