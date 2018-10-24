@@ -60,7 +60,7 @@ $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
     // \Symfony\Component\DependencyInjection\Container
     $container = $bridge->getContainer();
-} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException $e) {
+} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
 ```
@@ -73,7 +73,7 @@ More information about Symfony service container and depencency injection:
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
     $result = $bridge->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of primitive type'));
-} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException $e) {
+} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
 ```
@@ -86,7 +86,7 @@ service integration easy. The output of the service method can be of any type.
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
     $em = $bridge->getContainer()->get('doctrine')->getManager();
-} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException $e) {
+} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
 ```
@@ -99,7 +99,7 @@ $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
     $container = $bridge->getContainer(); // Initializes Symfony2+ PSR class loader
     $imageHelper = new \Pepis\ImageManipulationBundle\Helpers\ImageHelper();
-} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException $e) {
+} catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
 ```
