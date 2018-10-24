@@ -28,9 +28,9 @@ Method naming convention is intentionally camelCase, the same as in Symfony2 - o
 ## Compatibility
 CodeIgniter: 2.0 - 3.1+
 
-Symfony2: 2.0 - 2.8
+Symfony2: 2.*, 3.*, 4.*
 
-Note this code is fully compatible with PHP 5.2-5.6 yet Symfony2 will not run on anything below PHP 5.3.
+Note this code is fully compatible with PHP 5.2-7.1, however you should satisfy Symfony requirements.
 
 ## License
 The software is dual-licensed under:
