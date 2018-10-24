@@ -38,8 +38,7 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Exception
-     * @expectedExceptionCode 300
+     * @expectedException \PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException
      */
     public function testGetKernelWrongManualConfiguration()
     {
@@ -52,8 +51,7 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Exception
-     * @expectedExceptionCode 200
+     * @expectedException \PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException
      */
     public function testGetKernelFakeSymfony27MissingBootstrap()
     {

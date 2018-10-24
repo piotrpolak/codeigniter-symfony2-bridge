@@ -2,6 +2,9 @@
 
 namespace PiotrPolak\CodeIgniterSymfonyBridge;
 
+use PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException;
+use PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException;
+
 /**
  * Symfony2+ bridge
  * Allows to communicate with Symfony2+ Application Kernel
@@ -90,8 +93,8 @@ class Bridge
     private function initializeSymfony2Kernel()
     {
         if (!file_exists($this->getSymfony2BootstrapPath())) {
-            throw new \Exception('Unable to import application bootstrap. File '
-                . $this->getSymfony2BootstrapPath() . ' does not exist.', 200);
+            throw new MissingBootstrapException('Unable to import application bootstrap. File '
+                . $this->getSymfony2BootstrapPath() . ' does not exist.');
         }
         require_once $this->getSymfony2BootstrapPath();
         require_once $this->getSymfony2KernelPath();
@@ -160,8 +163,7 @@ class Bridge
             return $this->initializeSymfony3Kernel();
         }
 
-        throw new \Exception('Unable to import application kernel. File '
-            . $this->getSymfony2KernelPath() . ' nor ' . $this->getSymfony3KernelPath() . ' does not exist.',
-            300);
+        throw new KernelInitializationException('Unable to import application kernel. File '
+            . $this->getSymfony2KernelPath() . ' nor ' . $this->getSymfony3KernelPath() . ' does not exist.');
     }
 }
