@@ -55,18 +55,8 @@ class Bridge
      */
     public function getKernel()
     {
-        if ($this->kernel === NULL) {
-            if (file_exists($this->getSymfony2KernelPath())) {
-                $this->initializeSymfony2Kernel();
-            } else {
-                if (file_exists($this->getSymfony3KernelPath())) {
-                    $this->initializeSymfony3Kernel();
-                } else {
-                    throw new \Exception('Unable to import application kernel. File '
-                        . $this->getSymfony2KernelPath() . ' nor ' . $this->getSymfony3KernelPath() . ' does not exist.',
-                        300);
-                }
-            }
+        if ($this->kernel === null) {
+            $this->kernel = $this->resolveAndGetKernel();
         }
 
         return $this->kernel;
@@ -93,6 +83,10 @@ class Bridge
         }
     }
 
+    /**
+     * @return \AppKernel
+     * @throws \Exception
+     */
     private function initializeSymfony2Kernel()
     {
         if (!file_exists($this->getSymfony2BootstrapPath())) {
@@ -102,17 +96,24 @@ class Bridge
         require_once $this->getSymfony2BootstrapPath();
         require_once $this->getSymfony2KernelPath();
 
-        $this->kernel = new \AppKernel($this->getEnvironment(), !$this->isProductionEnvironment);
-        $this->kernel->loadClassCache();
-        $this->kernel->boot();
+        $kernel = new \AppKernel($this->getEnvironment(), !$this->isProductionEnvironment);
+        $kernel->loadClassCache();
+        $kernel->boot();
+
+        return $kernel;
     }
 
+    /**
+     * @return \App\Kernel
+     */
     private function initializeSymfony3Kernel()
     {
         require $this->symfonyAppRootDirectory . DIRECTORY_SEPARATOR . 'vendor' . DIRECTORY_SEPARATOR . 'autoload.php';
         require_once $this->getSymfony3KernelPath();
-        $this->kernel = new \App\Kernel($this->getEnvironment(), !$this->isProductionEnvironment);
-        $this->kernel->boot();
+        $kernel = new \App\Kernel($this->getEnvironment(), !$this->isProductionEnvironment);
+        $kernel->boot();
+
+        return $kernel;
     }
 
     /**
@@ -145,5 +146,22 @@ class Bridge
     private function getSymfony2BootstrapPath()
     {
         return $this->symfonyAppRootDirectory . DIRECTORY_SEPARATOR . 'bootstrap.php.cache';
+    }
+
+    /**
+     * @return \App\Kernel|void
+     * @throws \Exception
+     */
+    private function resolveAndGetKernel()
+    {
+        if (file_exists($this->getSymfony2KernelPath())) {
+            return $this->initializeSymfony2Kernel();
+        } else if (file_exists($this->getSymfony3KernelPath())) {
+            return $this->initializeSymfony3Kernel();
+        }
+
+        throw new \Exception('Unable to import application kernel. File '
+            . $this->getSymfony2KernelPath() . ' nor ' . $this->getSymfony3KernelPath() . ' does not exist.',
+            300);
     }
 }

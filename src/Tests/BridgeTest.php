@@ -42,12 +42,12 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetKernelManualConfigurationSymfony27()
     {
-        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
+        if ($this->isPhpVersionLessThan('5.6.0')) {
             return;
         }
         $tempDir = $this->generateTempDir();
         $installationDir = 'tmp_symfony_2_7';
-        system('composer --no-dev --no-interaction --working-dir=' . escapeshellarg($tempDir) . ' create-project symfony/framework-standard-edition ' . escapeshellarg($installationDir) . ' "2.7.*" 2>&1 || echo "An error occurred."');
+        system($this->getSymfonyInstallationCommand($tempDir, $installationDir, '2.7'));
 
         $symfonyAppBasePath = $tempDir . DIRECTORY_SEPARATOR . $installationDir . DIRECTORY_SEPARATOR . 'app';
         $this->doTestBridge($symfonyAppBasePath);
@@ -58,12 +58,12 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetKernelManualConfigurationSymfony34()
     {
-        if (version_compare(PHP_VERSION, '7.0.8', '<')) {
+        if ($this->isPhpVersionLessThan('7.0.8')) {
             return;
         }
         $tempDir = $this->generateTempDir();
         $installationDir = 'tmp_symfony_3_4';
-        system('composer --no-dev --working-dir=' . escapeshellarg($tempDir) . ' create-project symfony/website-skeleton ' . escapeshellarg($installationDir) . ' "3.4.*" 2>&1 || echo "An error occurred."');
+        system($this->getSymfonyInstallationCommand($tempDir, $installationDir, '3.4'));
 
         $symfonyAppBasePath = $tempDir . DIRECTORY_SEPARATOR . $installationDir;
         $this->doTestBridge($symfonyAppBasePath);
@@ -74,12 +74,12 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetKernelManualConfigurationSymfony40()
     {
-        if (version_compare(PHP_VERSION, '7.1.3', '<')) {
+        if ($this->isPhpVersionLessThan('7.1.3')) {
             return;
         }
         $tempDir = $this->generateTempDir();
         $installationDir = 'tmp_symfony_4_1';
-        system('composer --no-dev --working-dir=' . escapeshellarg($tempDir) . ' create-project symfony/website-skeleton ' . escapeshellarg($installationDir) . ' "4.1.*" 2>&1 || echo "An error occurred."');
+        system($this->getSymfonyInstallationCommand($tempDir, $installationDir, '4.1'));
 
         $symfonyAppBasePath = $tempDir . DIRECTORY_SEPARATOR . $installationDir;
         $this->doTestBridge($symfonyAppBasePath);
@@ -129,5 +129,34 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
         $this->assertGreaterThan(0, count($bridge->getContainer()->getServiceIds()));
 
         unset($bridge);
+    }
+
+    /**
+     * @param $minimumRequiredPhpVersion
+     * @return mixed
+     */
+    private function isPhpVersionLessThan($minimumRequiredPhpVersion)
+    {
+        return version_compare(PHP_VERSION, $minimumRequiredPhpVersion, '<');
+    }
+
+    /**
+     * @param $tempDir
+     * @param $installationDir
+     * @param $version
+     * @return string
+     */
+    private function getSymfonyInstallationCommand($tempDir, $installationDir, $version)
+    {
+        if (version_compare('3.0', $version, '>')) {
+            $symfonyProjectName = 'symfony/framework-standard-edition';
+        } else {
+            $symfonyProjectName = 'symfony/website-skeleton';
+        }
+
+        return 'composer --no-dev --no-interaction --working-dir=' . escapeshellarg($tempDir)
+            . ' create-project ' . $symfonyProjectName
+            . ' ' . escapeshellarg($installationDir)
+            . ' "' . $version . '.*" 2>&1 || echo "An error occurred."';
     }
 }
