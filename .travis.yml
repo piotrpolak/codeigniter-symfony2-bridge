@@ -14,4 +14,4 @@ script:
   - vendor/bin/phpunit -v
 
 after_script:
-  - ./vendor/bin/test-reporter
+  - if [[ ${TRAVIS_PHP_VERSION:0:3} == "7.2" ]]; then ./vendor/bin/test-reporter; fi
