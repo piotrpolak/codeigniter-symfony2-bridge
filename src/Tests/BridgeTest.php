@@ -42,7 +42,7 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetKernelManualConfigurationSymfony27()
     {
-        if (version_compare(PHP_VERSION, '5.3.9', '<')) {
+        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
             return;
         }
         $tempDir = $this->generateTempDir();
@@ -58,7 +58,7 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetKernelManualConfigurationSymfony34()
     {
-        if (version_compare(PHP_VERSION, '5.5.9', '<')) {
+        if (version_compare(PHP_VERSION, '7.0.8', '<')) {
             return;
         }
         $tempDir = $this->generateTempDir();
