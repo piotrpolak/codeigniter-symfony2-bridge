@@ -28,13 +28,41 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
     /**
      * @runInSeparateProcess
      */
-    public function testGetKernelDefaultConfiguration()
+    public function testGetKernelFakeSymfony27()
     {
         $bridge = new Bridge(__DIR__ . DIRECTORY_SEPARATOR . 'mocks' . DIRECTORY_SEPARATOR . 'app');
         $kernel = $bridge->getKernel();
         $this->assertNotNull($kernel);
         unset($bridge);
         $this->assertTrue($kernel->_wasProperlyShutDown());
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionCode 300
+     */
+    public function testGetKernelWrongManualConfiguration()
+    {
+        $bridge = new Bridge('inexistentLocation');
+
+        $kernel = $bridge->getKernel();
+        $this->assertNull($kernel);
+
+        unset($bridge);
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionCode 200
+     */
+    public function testGetKernelFakeSymfony27MissingBootstrap()
+    {
+        $bridge = new Bridge(__DIR__ . DIRECTORY_SEPARATOR . 'mocks' . DIRECTORY_SEPARATOR . 'app_missing_bootstrap');
+
+        $kernel = $bridge->getKernel();
+        $this->assertNull($kernel);
+
+        unset($bridge);
     }
 
     /**
@@ -83,20 +111,6 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
 
         $symfonyAppBasePath = $tempDir . DIRECTORY_SEPARATOR . $installationDir;
         $this->doTestBridge($symfonyAppBasePath);
-    }
-
-    /**
-     * @expectedException \Exception
-     * @expectedExceptionCode 300
-     */
-    public function testGetKernelWrongManualConfiguration()
-    {
-        $bridge = new Bridge('inexistentLocation');
-
-        $kernel = $bridge->getKernel();
-        $this->assertNull($kernel);
-
-        unset($bridge);
     }
 
     private function generateTempDir()
