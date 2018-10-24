@@ -6,10 +6,7 @@ use PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException;
 use PiotrPolak\CodeIgniterSymfonyBridge\Exception\MissingBootstrapException;
 
 /**
- * Symfony2+ bridge
- * Allows to communicate with Symfony2+ Application Kernel
- *
- * Method naming convention is intentionally camelCase, the same as in Symfony2+
+ * Symfony2+ bridge allowing communication with Symfony2+ Application Kernel
  *
  * @version 2.0
  * @author Piotr Polak <piotr@polak.ro>
