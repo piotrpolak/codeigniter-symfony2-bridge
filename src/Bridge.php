@@ -63,17 +63,6 @@ class Bridge
     }
 
     /**
-     * Returns Symfony2+ container
-     *
-     * @return \Symfony\Component\DependencyInjection\ContainerInterface
-     * @throws \Exception
-     */
-    public function getContainer()
-    {
-        return $this->getKernel()->getContainer();
-    }
-
-    /**
      * Magic method called upon destruction
      */
     public function __destruct()

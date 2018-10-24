@@ -135,10 +135,10 @@ class BridgeTest extends \PHPUnit_Framework_TestCase
         $this->assertFileExists($symfonyAppBasePath);
         $bridge = new Bridge($symfonyAppBasePath);
 
-        $this->assertNotNull($bridge->getKernel());;
-        $this->assertNotNull($bridge->getContainer());
-        $this->assertNotNull($bridge->getContainer()->getServiceIds());
-        $this->assertGreaterThan(0, count($bridge->getContainer()->getServiceIds()));
+        $this->assertNotNull($bridge->getKernel());
+        $this->assertNotNull($bridge->getKernel()->getContainer());
+        $this->assertNotNull($bridge->getKernel()->getContainer()->getServiceIds());
+        $this->assertGreaterThan(0, count($bridge->getKernel()->getContainer()->getServiceIds()));
 
         unset($bridge);
     }

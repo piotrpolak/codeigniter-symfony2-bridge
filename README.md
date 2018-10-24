@@ -50,7 +50,7 @@ PHP_VERSION=7.2 bin/test_in_docker.sh
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
     // \Symfony\Component\DependencyInjection\Container
-    $container = $bridge->getContainer();
+    $container = $bridge->getKernel()->getContainer();
 } catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
@@ -64,7 +64,7 @@ More information about Symfony service container and depencency injection:
 ```php
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
-    $result = $bridge->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of primitive type'));
+    $result = $bridge->getKernel()->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of primitive type'));
 } catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
@@ -78,7 +78,7 @@ service integration easy. The output of the service method can be of any type.
 ```php
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
-    $em = $bridge->getContainer()->get('doctrine')->getManager();
+    $em = $bridge->getKernel()->getContainer()->get('doctrine')->getManager();
 } catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
@@ -91,7 +91,7 @@ Getting access to the Doctrine2 entity manager makes you able to get access to t
 ```php
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
-    $container = $bridge->getContainer(); // Initializes Symfony2+ PSR class loader
+    $container = $bridge->getKernel()->getContainer(); // Initializes Symfony2+ PSR class loader
     $imageHelper = new \Pepis\ImageManipulationBundle\Helpers\ImageHelper();
 } catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
