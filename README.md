@@ -9,6 +9,8 @@ If you want to use the initial [CodeIgniter
 library, please check the 0.1.0 release](https://github.com/piotrpolak/codeigniter-symfony2-bridge/releases/tag/0.1.0).
 
 [![Build Status](https://travis-ci.org/piotrpolak/codeigniter-symfony2-bridge.svg)](https://travis-ci.org/piotrpolak/codeigniter-symfony2-bridge)
+[![Maintainability](https://api.codeclimate.com/v1/badges/356328690ebe2cc991d1/maintainability)](https://codeclimate.com/github/piotrpolak/codeigniter-symfony2-bridge/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/356328690ebe2cc991d1/test_coverage)](https://codeclimate.com/github/piotrpolak/codeigniter-symfony2-bridge/test_coverage)
 
 ## Some history and most common scenario
 

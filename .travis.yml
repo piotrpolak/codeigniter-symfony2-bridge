@@ -12,3 +12,6 @@ install:
 
 script:
   - vendor/bin/phpunit -v
+
+after_script:
+  - ./vendor/bin/test-reporter
