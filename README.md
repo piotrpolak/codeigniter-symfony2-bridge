@@ -4,12 +4,11 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/356328690ebe2cc991d1/maintainability)](https://codeclimate.com/github/piotrpolak/codeigniter-symfony2-bridge/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/356328690ebe2cc991d1/test_coverage)](https://codeclimate.com/github/piotrpolak/codeigniter-symfony2-bridge/test_coverage)
 
-A library that facilitates integration of Symfony services into a a legacy framework application in a compact wat.
+A library that facilitates integration of Symfony services into legacy framework applications in a compact way.
 
-As version 1.0.0 the code has been decoupled from the CodeIgniter framework. This means that is can potentially be used
-to integrate any 3rd party framework with Symfony kernel/container.
+As version 1.0.0 the package is composer-compatible and the code has been decoupled from the CodeIgniter framework.
 
-If you want to use the [initial CodeIgniter library](https://github.com/piotrpolak/codeigniter-symfony2-bridge/releases/tag/0.1.0),
+If you want to use [the initial CodeIgniter library](https://github.com/piotrpolak/codeigniter-symfony2-bridge/releases/tag/0.1.0),
 please check the [0.1.0 release](https://github.com/piotrpolak/codeigniter-symfony2-bridge/releases/tag/0.1.0).
 
 ## Some history and the most common scenario
@@ -64,7 +63,7 @@ More information about Symfony service container and depencency injection:
 ```php
 $bridge = new \PiotrPolak\CodeIgniterSymfonyBridge\Bridge('./symfonyRootDir');
 try {
-    $result = $bridge->getKernel()->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of primitive type'));
+    $result = $bridge->getKernel()->getContainer()->get('my_service')->businessLogicServiceMethod('parameter of a primitive type'));
 } catch(\PiotrPolak\CodeIgniterSymfonyBridge\Exception\KernelInitializationException $e) {
     // Unable to initialize Symfony2+ kernel
 }
